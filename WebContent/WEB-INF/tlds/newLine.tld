@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/javaee" version="2.1">
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>2.2</jsp-version>
+	<short-name>tools</short-name>
+	<tag>
+		<name>newLine</name>
+		<tag-class>ch16_simpleTagSupport.MyDySimpleTag</tag-class>
+		<body-content>empty</body-content>
+		<dynamic-attributes>true</dynamic-attributes>
+	</tag>
+</taglib>

@@ -25,4 +25,10 @@
     <filter-name>upper</filter-name>
     <url-pattern>/proc</url-pattern>
   </filter-mapping>
+  <resource-ref>
+    <description>DB Connection</description>
+    <res-ref-name>jdbc/java</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
 </web-app>

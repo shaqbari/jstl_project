@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+<!-- jquery 사용-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	//문서가 로딩되면 호출된다.(Html이 dom으로 올라오면 호출된다.)
+	$(document).ready(function(){
+		//alert("hi");
+			
+		//submit()이벤트를 잡아서 ajax로 통신한다.
+	 	$("form").submit(function(e){
+			//통신
+			 $.ajax({
+				url:"/jstl_project/LoginProc2",
+				data:$("form").serialize(),
+				dataType="json",
+				type:"get",
+				success:function(json){
+					//여기서 성공 결과를 보고 화면 처리
+					console.log(json.uid+", "+json.upw);
+					alert(json.uid+"님 환영합니다.");
+					document.location.href="bbs3.html";
+				},
+				error:function(err){
+					//로그인 실패
+					alert("로그인 실패");
+				}				
+			});
+			
+			e.preventDefault();//이벤트 중단
+			return false; //이벤트 중단 위와 이것중 하나 쓰면 된다.
+		});
+	});
+</script>
+
+</head>
+<body>
+	hybridApp
+	<fieldset>
+		<form action="/jstl_project/LoginProc2">
+			<input type="text" name="uid">
+			<input type="password" name="upw">
+			<input type="submit" value="로그인">
+		</form>
+		<a href="/jstl_project/JoinProc">회원가입</a>
+	</fieldset>
+</body>
+</html>

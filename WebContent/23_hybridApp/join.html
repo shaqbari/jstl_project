@@ -15,15 +15,20 @@
 	 	$("form").submit(function(e){
 			//통신
 			 $.ajax({
-				url:"/jstl_project/LoginProc2",
+				url:"/jstl_project/JoinProc",
 				data:$("form").serialize(),
 				dataType="json",
-				type:"get",
+				type:"post",
 				success:function(json){
 					//여기서 성공 결과를 보고 화면 처리
-					console.log(json.uid+", "+json.upw);
-					alert(json.uid+"님 환영합니다.");
-					document.location.href="bbs3.html";
+					console.log(json.code);
+					if(json.code=="1"){
+						alert("회원가입 성공");
+						history.back();
+					}else{
+						alert("회원가입 실패");
+						
+					}
 				},
 				error:function(err){
 					//로그인 실패
@@ -41,12 +46,11 @@
 <body>
 	hybridApp
 	<fieldset>
-		<form action="/jstl_project/LoginProc2">
+		<form action="/jstl_project/JoinProc" method="post">
 			<input type="text" name="uid">
 			<input type="password" name="upw">
-			<input type="submit" value="로그인">
+			<input type="submit" value="회원가입">
 		</form>
-		<a href="join.html">회원가입</a>
 	</fieldset>
 </body>
 </html>
